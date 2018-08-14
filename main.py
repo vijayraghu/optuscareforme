@@ -137,11 +137,11 @@ def process_speech():
 			resp.redirect('/process_close')
 		
 		# Perform employee number validation
-		if intent_name == 'get_employee_number_cartwright_yes':
+		#if intent_name == 'get_employee_number_cartwright_yes':
 			#Validate employee number
-			if (str(emp_id)[:2]) != '10':
-				resp.dial('+61280490603')
-				resp.redirect('/process_close')
+			#if (str(emp_id)[:2]) != '10':
+				#resp.dial('+61280490603')
+				#resp.redirect('/process_close')
 		
 		# Transfer to routepoint based in intent and product	
 		print 'Intent :' + intent_name
