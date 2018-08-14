@@ -39,7 +39,7 @@ def start():
 	resp = VoiceResponse()
 	if (end <= timestamp >= start):
 		# If call time not within hours of operation, play appropriate prompt and transfer to general line
-		values = {"text": 'Our office hours are from 08:30 AM till 18:00 PM on weekdays. Kindly hold while we transfer your call to our general assistance line and a customer service representative will assist you'}
+		values = {"text": 'Hi! The Care For me team is currently closed, the team is open from 8:30 till 6 P M weekdays, please hold and I’ll transfer your call to the General Customer Service Number.'}
 		print 'In start: before Google TTS'
 		resp.play(hostname + 'goog_text2speech?' + qs)
 		print 'In start: after Google TTS'
@@ -316,37 +316,37 @@ def processRequest(req):
 	# Process employee number
 	if intentname == 'get_employee_number_cartwright_yes':
 		#Validate employee number
-		if (str(emp_id)[:2]) != '10':
-			speech = 'This is not a valid employee number. Kindly hold on while we connect you to one of our customer service agent'
-		else:
-			speech = 'Thanks for providing your employee number. How can we help you today?'
+		#if (str(emp_id)[:2]) != '10':
+			#speech = 'This is not a valid employee number. Kindly hold on while we connect you to one of our customer service agent'
+		#else:
+		speech = 'Thanks for providing your employee number. Now how can we help you today?'
 	
 	# Get employee number again if user informs that employee id interpretation is incorrect
 	elif intentname == 'get_employee_number_cartwright_no':
-		speech = 'Please provide your employee number by speaking each digit individually'
+		speech = 'OK. If you could just tell me your employee number speaking every digit individually, i can help you. If you dont have an employee number, thats fine. Just say you dont have it or say exit.'
 	
     	# Transfer for Billing_services
     	elif intentname == 'billing_services_cartwright':
-		speech = 'Kindly hold on while we connect you to one of our customer service agent'
+		speech = 'Ok. Let me transfer you to one of my colleagues that can help you with your Billing inquiry'
 	
     	# Transfer for Sales_services   
     	elif intentname == 'sales_services_cartwright':
-		speech = 'Kindly hold on while we connect you to one of our customer service agent'
+		speech = 'Ok. Let me transfer you to one of my colleagues that can help you with your Sales inquiry'
 	
     	# Transfer for Tech_services
     	elif intentname == 'tech_services_cartwright':
-		speech = 'Kindly hold on while we connect you to one of our customer service agent'
+		speech = 'Ok. Let me transfer you to one of my colleagues that can help you with your Technical inquiry'
 			
     	# Transfer to General services if employee number is not provided
     	elif intentname == 'no_employee_number_cartwright':
-		speech = 'Kindly hold on while we connect you to one of our customer service agent'
+		speech = 'Ok. My colleague in the General Customer Service Team will help you with your inquiry today.'
 		
 	# Catch all error/exception scenarios and transfer to General services
 	else:
-		speech = 'Kindly hold on while we connect you to one of our customer service agent'
+		speech = 'Ok. My colleague in the General Customer Service Team will help you with your inquiry today.'
 	
 	return {'speech': speech, 'displayText': speech, 
-		'source': 'careforyou'
+		'source': 'careformev0'
 	       }
 	return res
 
@@ -356,11 +356,11 @@ def processRequest(req):
 #####
 @app.route('/goog_text2speech', methods=['GET', 'POST'])
 def goog_text2speech():
-	text = request.args.get('text', "Hello! Invalid request. Please provide the TEXT value")
+	text = request.args.get('text', "Oh No! There seems to be something wrong with my ram. Can you try calling back a little later after i talk to my friends in IT.")
 	
 	# Pre-process the text 
-	if len(text) == 0:
-		text = "We are experiencing technical difficulties at the moment. Please call back later."
+	#if len(text) == 0:
+		#text = "We are experiencing technical difficulties at the moment. Please call back later."
 	
 	# Adding space between numbers for better synthesis
 	if re.search(r'\b\d{1,16}\b', text):
