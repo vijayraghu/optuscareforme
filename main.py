@@ -323,7 +323,7 @@ def processRequest(req):
 	
 	# Get employee number again if user informs that employee id interpretation is incorrect
 	elif intentname == 'get_employee_number_cartwright_no':
-		speech = 'OK. If you could just tell me your employee number speaking every digit individually, i can help you. If you dont have an employee number, thats fine. Just say you dont have it or say exit.'
+		speech = 'Sorry about that. If you could just tell me your employee number speaking every digit individually, i can help you. If you dont have an employee number, thats fine. Just say you dont have it or say exit.'
 	
     	# Transfer for Billing_services
     	elif intentname == 'billing_services_cartwright':
